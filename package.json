@@ -1,5 +1,5 @@
 {
-  "name": "basicvuerouter",
+  "name": "freedictionary",
   "version": "0.0.0",
   "scripts": {
     "dev": "vite",
