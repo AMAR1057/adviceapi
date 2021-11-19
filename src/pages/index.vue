@@ -1,38 +1,25 @@
+<script setup>
+import { ref } from "vue";
+import { useDefinition } from "../composables/useDefinition";
+const { definitions, search } = useDefinition();
+const searchItem = ref("");
+</script>
+
 <template>
   <div>
     <input
+      v-model="searchItem"
+      @change="search(searchItem)"
       type="text"
-      placeholder="Search to find meaning...."
-      class="w-full mt-16 rounded-full text-xl text-center"
+      placeholder="Search a definition..."
+      class="w-full py-4 mt-16 text-xl text-center rounded-full"
     />
     <div class="grid grid-cols-2 gap-16 pt-16">
-      <p>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
-        veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-        commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
-        velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint
-        occaecat cupidatat non proident, sunt in culpa qui officia deserunt
-        mollit anim id est laborum.
-      </p>
-      <p>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
-        veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-        commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
-        velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint
-        occaecat cupidatat non proident, sunt in culpa qui officia deserunt
-        mollit anim id est laborum.
-      </p>
-      <p>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
-        veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-        commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
-        velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint
-        occaecat cupidatat non proident, sunt in culpa qui officia deserunt
-        mollit anim id est laborum.
-      </p>
+      <div v-for="(definition, index) in definitions" :key="index">
+        <p>
+          {{ definition.definition }}
+        </p>
+      </div>
     </div>
   </div>
 </template>
